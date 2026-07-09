@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { NavLink, Route, Routes } from 'react-router-dom'
+import SupportWidget from './components/SupportWidget.jsx'
 
 const Landing = lazy(() => import('./pages/Landing.jsx'))
 const Dashboard = lazy(() => import('./pages/Dashboard.jsx'))
@@ -56,11 +57,14 @@ function AppShell() {
 
 export default function App() {
   return (
-    <Suspense fallback={null}>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/app/*" element={<AppShell />} />
-      </Routes>
-    </Suspense>
+    <>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/app/*" element={<AppShell />} />
+        </Routes>
+      </Suspense>
+      <SupportWidget />
+    </>
   )
 }
